@@ -13,9 +13,9 @@ startCommand = "node ./sandbox/supervisor.mjs"
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3
 
-# Health check
-healthcheckPath = "/"
-healthcheckTimeout = 300
+# Health check disabled - Grist requires auth on all paths
+# healthcheckPath = "/"
+# healthcheckTimeout = 300
 
 # Persistent storage volume
 [[deploy.volumes]]
