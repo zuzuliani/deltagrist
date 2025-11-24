@@ -1,0 +1,23 @@
+# Railway Configuration for Grist
+# This configures how Railway builds and deploys your Grist instance
+
+[build]
+# Use the existing Dockerfile in the repo
+builder = "DOCKERFILE"
+
+[deploy]
+# Start command for Grist
+startCommand = "node ./sandbox/supervisor.mjs"
+
+# Restart policy
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+# Health check
+healthcheckPath = "/status/hooks"
+healthcheckTimeout = 60
+
+# Persistent storage volume
+[[deploy.volumes]]
+mountPath = "/persist"
+

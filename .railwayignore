@@ -1,0 +1,39 @@
+# Files to ignore during Railway deployment
+# Reduces upload time and deployment size
+
+# Development files
+node_modules/
+.git/
+.github/
+*.log
+
+# Test files
+test/
+.mocharc.js
+
+# Documentation
+documentation/
+*.md
+!README.md
+
+# Build artifacts (will be rebuilt)
+_build/
+
+# Local config
+.env
+.env.local
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Crowdin
+crowdin.yml
+

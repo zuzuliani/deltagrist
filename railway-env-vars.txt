@@ -1,0 +1,84 @@
+# ============================================
+# Grist on Railway - Environment Variables
+# ============================================
+# Copy these to Railway Dashboard → Service → Variables
+
+# ============================================
+# REQUIRED - Server Configuration
+# ============================================
+PORT=8484
+GRIST_HOST=0.0.0.0
+GRIST_SINGLE_PORT=true
+GRIST_SERVE_SAME_ORIGIN=true
+
+# ============================================
+# REQUIRED - Organization Setup
+# ============================================
+GRIST_ORG_IN_PATH=true
+GRIST_SINGLE_ORG=mycompany
+# ^ Change "mycompany" to your SaaS name (lowercase, no spaces)
+
+# ============================================
+# REQUIRED - Security
+# ============================================
+GRIST_SESSION_SECRET=CHANGE_ME_TO_RANDOM_32_CHAR_STRING
+# ^ Generate with: openssl rand -hex 32
+
+GRIST_FORCE_LOGIN=true
+GRIST_ANON_PLAYGROUND=false
+
+# ============================================
+# REQUIRED - Storage
+# ============================================
+GRIST_DATA_DIR=/persist/docs
+GRIST_INST_DIR=/persist
+
+# ============================================
+# DATABASE - Choose ONE option
+# ============================================
+
+# OPTION A: SQLite (simpler, for MVP)
+TYPEORM_TYPE=sqlite
+TYPEORM_DATABASE=/persist/home.sqlite3
+
+# OPTION B: PostgreSQL (recommended for production)
+# Uncomment these and comment out SQLite above:
+# TYPEORM_TYPE=postgres
+# TYPEORM_HOST=${PGHOST}
+# TYPEORM_PORT=${PGPORT}
+# TYPEORM_DATABASE=${PGDATABASE}
+# TYPEORM_USERNAME=${PGUSER}
+# TYPEORM_PASSWORD=${PGPASSWORD}
+
+# ============================================
+# AUTHENTICATION - Forward Auth Setup
+# ============================================
+GRIST_FORWARD_AUTH_HEADER=X-Forwarded-User
+GRIST_FORWARD_AUTH_LOGIN_PATH=/auth/login
+GRIST_FORWARD_AUTH_LOGOUT_PATH=/auth/logout
+GRIST_IGNORE_SESSION=false
+
+# ============================================
+# OPTIONAL - Hide UI Elements
+# ============================================
+GRIST_HIDE_UI_ELEMENTS=billing,templates,tutorials,supportGrist
+GRIST_TELEMETRY_LEVEL=off
+
+# ============================================
+# OPTIONAL - Sandbox (default: unsandboxed)
+# ============================================
+GRIST_SANDBOX_FLAVOR=unsandboxed
+# Note: gvisor may not work in Railway's environment
+
+# ============================================
+# OPTIONAL - Limits
+# ============================================
+GRIST_MAX_UPLOAD_IMPORT_MB=50
+GRIST_MAX_UPLOAD_ATTACHMENT_MB=50
+GRIST_MAX_PARALLEL_REQUESTS_PER_DOC=10
+
+# ============================================
+# PRODUCTION - Performance
+# ============================================
+NODE_ENV=production
+
