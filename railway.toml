@@ -14,8 +14,8 @@ restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3
 
 # Health check
-healthcheckPath = "/status/hooks"
-healthcheckTimeout = 60
+healthcheckPath = "/"
+healthcheckTimeout = 300
 
 # Persistent storage volume
 [[deploy.volumes]]
